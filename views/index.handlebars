@@ -4,13 +4,24 @@
     <head>
         <meta charset="utf-8">
         <title>Make Chat</title>
+
         <!-- Socket.io and jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="socket.io/socket.io.js"></script>
+        <link href='https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css'></link>
+
+        <!-- Custom CSS Files -->
+        <link href='/public/index.css' rel='stylesheet' type='text/css'></link>
+
+        <!-- Custom JS and jQuery Files -->
         <script src="/index.js"></script>
     </head>
 
     <body>
-        <h1>Socket.io</h1>
+        <h1>Welcome to Make Chat!</h1>
+        <form class="usernameForm">
+            <input id="usernameInput" placeholder="Username">
+            <button id="createUserBtn">Join Chat</button>
+        </form>
     </body>
 </html>
