@@ -11,7 +11,7 @@ module.exports = (io, socket, onlineUsers, channels) => {
     });
 
     socket.on('new message', (data) => {
-        console.log(`${data.sender}: ${data.message}`);
+        // console.log(`${data.sender}: ${data.message}`);
         channels[data.channel].push({
             sender: data.sender,
             message: data.message,
@@ -29,6 +29,7 @@ module.exports = (io, socket, onlineUsers, channels) => {
     });
 
     socket.on('new channel', (newChannel) => {
+        console.log(newChannel);
         channels[newChannel] = [];
         socket.join(newChannel);
         io.emit('new channel', newChannel);
@@ -38,4 +39,11 @@ module.exports = (io, socket, onlineUsers, channels) => {
         });
     });
 
+    socket.on('user changed channel', (newChannel) => {
+        socket.join(newChannel);
+        socket.emit('user changed channel', {
+            channel: newChannel,
+            messages: channels[newChannel],
+        });
+    });
 };
