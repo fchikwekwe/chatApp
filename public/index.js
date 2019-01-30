@@ -68,4 +68,27 @@ $(document).ready(() => {
             `);
         }
     });
+
+    socket.on('new channel', (newChannel) => {
+        $('.channels').append(`
+            <div class="channel">${newChannel}</div>
+        `);
+    });
+
+    socket.on('user changed channel', (data) => {
+        $('.channel-current').addClass('channel');
+        $('.channel-current').removeClass('channel-current');
+        $(`.channel:contains('${data.channel}')`).addClass('.channel-current');
+        $('.channel-current').removeClass('channel');
+        $('.message').remove();
+        data.messages.forEach((message) => {
+            $('.messageContainer').append(`
+                <div class="message">
+                    <p class="messageUser">${message.sender}: </p>
+                    <p class="messageText">${message.message} </p>
+                </div>
+            `);
+        });
+    });
+    
 });
