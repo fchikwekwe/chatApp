@@ -1,5 +1,5 @@
 /*
-* Chat App Main Server
+* Faith Chat Main Server
 */
 
 const express = require('express');
