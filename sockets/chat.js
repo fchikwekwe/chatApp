@@ -18,4 +18,9 @@ module.exports = (io, socket, onlineUsers) => {
     socket.on('get online users', () => {
         socket.emit('get online users', onlineUsers);
     });
+
+    socket.on('disconnect', () => {
+        delete onlineUsers[socket.username];
+        io.emit('user has left', onlineUsers);
+    });
 };
