@@ -33,12 +33,12 @@ $(document).ready(() => {
         $('.usersOnline').append(`<div class="userOnline">${username}</div>`);
     });
 
-    socket.on('new messsage', (data) => {
+    socket.on('new message', (data) => {
         $('.messageContainer').append(`
             <div class="message">
                 <p class="messageUser">${data.sender}: </p>
                 <p class="messageText">${data.message} </p>
-                </div>
+            </div>
         `);
-    })
+    });
 });
