@@ -30,6 +30,7 @@ app.get('/', (req, res) => {
 });
 
 /** Port Listener */
-server.listen('3000', () => {
-    console.log('Server listening on Port 3000');
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+    console.log('Server listening on ', PORT);
 });
