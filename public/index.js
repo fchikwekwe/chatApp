@@ -3,6 +3,7 @@ $(document).ready(() => {
     let currentUser;
     socket.emit('get online users');
 
+    /** Button Handlers */
     $('#createUserBtn').click((e) => {
         e.preventDefault();
         if($('#usernameInput').val().length > 0) {
@@ -26,7 +27,16 @@ $(document).ready(() => {
         }
     });
 
-    // Socket Listeners
+    $('#newChannelBtn').click(() => {
+        let newChannel = $('#newChannelInput').val();
+
+        if(newChannel.length > 0) {
+            socket.emit('new channel', newChannel);
+            $('#newChannelInput').val("");
+        }
+    });
+
+    /** Socket Listeners */
     socket.on('new user', (username) => {
         console.log(`${username} has joined the chat`);
         // Add the new user to the online users div
