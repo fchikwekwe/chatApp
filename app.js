@@ -10,7 +10,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 let onlineUsers = {};
-let channels = {"General": []}
+let channels = { General: [] }
 
 io.on('connection', (socket) => {
     console.log('🔌 New user connected! 🔌');
